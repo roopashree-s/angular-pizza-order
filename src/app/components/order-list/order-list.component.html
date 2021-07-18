@@ -1,0 +1,51 @@
+<div class="card">
+  <div class="card-header">
+    Orders
+  </div>
+  <div class="card-body">
+    <div class="card-row">
+      <div class="row">
+        <div class="col-md-2">Filter By order id:</div>
+        <div class="col-md-4">
+          <input type="text" [(ngModel)]="listFilter" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center" *ngIf="errorMessage">
+          {{errorMessage}}
+        </div>
+      </div>
+      <div class="mt-2 text-center" *ngIf="filteredOrders.length == 0">
+        No Orders Available
+      </div>
+      <div class="row mt-2 vh-60 overflow-auto">
+        <div class="col-md-12">
+          <div class="list-group">
+            <div class="list-group-item list-group-item-action" *ngFor="let order of filteredOrders">
+              <div class="row cursor" [routerLink]="['/orders', order.orderId]">
+                <div class="col-md-6">
+                  <h5 class="mb-1">{{order.customerName}}</h5>
+                  <small>{{order.items.length}} items | {{order.price | currency : 'INR'}}</small>
+                </div>
+                <div class="col-md-3 text-center">
+                  {{statusTrans[order.status]}}
+                  <div>{{order.orderId}}</div>
+                </div>
+                <div class="col-md-3">
+                  <div class="d-flex flex-row-reverse">
+                    <button
+                      class="btn btn-primary" [disabled]="order.status=='ready'"
+                      (click)="updateStatus($event, order)"
+                    >
+                      change status
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

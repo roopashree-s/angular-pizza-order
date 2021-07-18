@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-header">Order details</div>
+  <div class="card-body">
+    <div *ngIf="orderDetail">
+      <div class="row">
+        <div class="col-md-6">
+          <div><b>Name:</b> {{orderDetail.customerName}}</div>
+          <div><b>Address:</b> {{orderDetail.address.street1}}</div>
+          <div>{{orderDetail.address.street2}} - {{orderDetail.address.pinCode}}</div>
+          <div><b>Mobile Number:</b> {{orderDetail.contactNumber}}</div>
+        </div>
+        <div class="col-md-6">
+          <div><b>Order Id:</b> {{orderDetail.orderId}}</div>
+          <div><b>Status:</b> {{statusTrans[orderDetail.status]}}</div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table" *ngIf='orderDetail.items.length'>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>qty</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let item of orderDetail.items'>
+              <td>{{item.name}}</td>
+              <td>{{item.qty}}</td>
+              <td>{{item.price | currency : 'INR'}} </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Total: </td>
+              <td>{{orderDetail.price | currency : 'INR'}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="!orderDetail" class="text-center">
+      Order detail Not found
+    </div>
+  </div>
+  <div class="card-footer">
+    <button
+      class="btn btn-secondary"
+      style="width:80px"
+      (click)="onBack()"
+    >
+      Back
+    </button>
+  </div>
+</div>
