@@ -1,4 +1,4 @@
-# angular-pizz-orders
+# angular-pizza-orders
 
 [Demo on StackBlitz ⚡️](https://angular-ivy-e6d6x1.stackblitz.io/orders)
 

@@ -3,6 +3,7 @@ export const orders = [
     orderId: '101-3-3',
     customerName: 'Tom',
     price: 200,
+    itemsCount: 3,
     items: [
       {
         name: 'Pasta Pizza',
@@ -27,6 +28,7 @@ export const orders = [
     orderId: '101-3-4',
     customerName: 'John',
     price: 100,
+    itemsCount: 1,
     items: [
       {
         name: 'Cheese burst Pizza',

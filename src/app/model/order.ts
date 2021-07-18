@@ -3,6 +3,6 @@ export interface IOrder {
   customerName: string;
   price: number;
   contactNumber: string;
-  items: any;
+  itemsCount: any;
   status: string;
 }
